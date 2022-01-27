@@ -10,9 +10,6 @@ public class Airport {
 		this.name = name;
 	}
 
-	/**
-	 * I don't have a specific purpose for this getter in this scope, but it makes sense to have it in general.
-	 */
 	public String getName() {
 		return name;
 	}

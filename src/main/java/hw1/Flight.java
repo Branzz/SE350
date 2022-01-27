@@ -1,7 +1,9 @@
 package hw1;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Objects;
+import java.util.UUID;
 
 public class Flight {
 
@@ -12,6 +14,8 @@ public class Flight {
 	private Date departureTime;
 
 	public Flight(final Airline airline, final Airport origin, final Airport destination, final String flightNumber, final Date departureTime) {
+		if (airline == null || origin == null || destination == null)
+			throw new NullPointerException();
 		this.airline = airline;
 		this.origin = origin;
 		this.destination = destination;
@@ -19,13 +23,11 @@ public class Flight {
 		this.departureTime = departureTime;
 	}
 
-	/*
-	 * I also don't have a specific purpose for these getters in this scope,
-	 * but it makes sense to me that they should be accessible.
-	 *
-	 * These sorts of variables usually shouldn't have setters;
-	 * seems it'd be better as an immutable object in this case.
-	 */
+	public Flight(final Airline airline, final Airport origin, final Airport destination) {
+		this(airline, origin, destination, UUID.randomUUID().toString(),
+			 new Date(2022 - 1900, Calendar.JANUARY, 20, 5, 30, 0));
+	}
+
 	public Airline getAirline() {
 		return airline;
 	}
