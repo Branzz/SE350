@@ -1,4 +1,4 @@
-package hw1;
+package hw;
 
 import java.util.Calendar;
 import java.util.Date;
