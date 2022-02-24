@@ -1,13 +1,22 @@
 package hw;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Airline {
 
-	private String name;
+	private static final Map<String, Airline> airlineCache = new HashMap<>();
 
-	public Airline(final String name) throws NamingException {
+	private final String name;
+
+	private Airline(final String name) {
+		this.name = name;
+	}
+
+	public static Airline getAirline(final String name) throws NamingException {
 		if (name == null || name.length() >= 8)
 			throw new NamingException("name must be less than 8 characters");
-		this.name = name;
+		return airlineCache.computeIfAbsent(name, Airline::new);
 	}
 
 	public String getName() {

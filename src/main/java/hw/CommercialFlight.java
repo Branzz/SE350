@@ -11,8 +11,8 @@ public class CommercialFlight extends Flight {
 	private Airport destination;
 	private Date departureTime;
 
-	public CommercialFlight(final Airline airline, final Airport origin, final Airport destination, final String flightNumber) {
-		super(flightNumber);
+	public CommercialFlight(final Airline airline, final Airport origin, final Airport destination) {
+		super();
 		if (airline == null || origin == null || destination == null)
 			throw new NullPointerException();
 		this.airline = airline;

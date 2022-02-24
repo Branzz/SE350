@@ -1,13 +1,22 @@
 package hw;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Airport {
 
-	private String name;
+	private static final Map<String, Airport> airportCache = new HashMap<>();
 
-	public Airport(final String name) throws NamingException {
+	private final String name;
+
+	private Airport(final String name) {
+		this.name = name;
+	}
+
+	public static Airport getAirport(final String name) throws NamingException {
 		if (name == null || !name.matches("[A-Z]{3}"))
 			throw new NamingException("name must consist of 3 alphabetic, capitalized characters");
-		this.name = name;
+		return airportCache.computeIfAbsent(name, Airport::new);
 	}
 
 	public String getName() {

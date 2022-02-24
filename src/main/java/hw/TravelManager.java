@@ -1,14 +1,14 @@
 package hw;
 
-import java.util.UUID;
-
 public class TravelManager {
 
 	public static void main(String[] args) {
 		try {
-			String flightNumber = UUID.randomUUID().toString();
-			FlightManager.getInstance().createFlight("CommercialFlight", new Airline("United"), new Airport("ORD"), new Airport("JFK"), flightNumber);
-			System.out.println("Flight Num: " + flightNumber + "\n" + FlightManager.getInstance().getFlightByNumber(flightNumber));
+			String commercialFlightNumber = FlightManager.getInstance().createFlight("CommercialFlight", Airline.getAirline("United"),
+																					 Airport.getAirport("ORD"), Airport.getAirport("JFK"), 0);
+			String passengerFlightNumber = FlightManager.getInstance().createFlight("PassengerFlight", null, null, null, 120);
+			System.out.println("Flight Num: " + commercialFlightNumber + "\n" + FlightManager.getInstance().getFlightByNumber(commercialFlightNumber) + '\n' +
+							   "Flight Num: " + passengerFlightNumber  + "\n" + FlightManager.getInstance().getFlightByNumber(passengerFlightNumber));
 		} catch (NamingException | NullPointerException e) {
 			e.printStackTrace();
 		}

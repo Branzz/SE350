@@ -19,8 +19,15 @@ public final class FlightManager {
 		flights = new ArrayList<>();
 	}
 
-	public void createFlight(String type, final Airline airline, final Airport origin, final Airport destination, final String flightNumber) {
-		flights.add(FlightFactory.createFlight(type, airline, origin, destination, flightNumber));
+	/**
+	 * @return created flight's flight number, null if flight is null
+	 */
+	public String createFlight(String type, final Airline airline, final Airport origin, final Airport destination, final int passengerCapacity) {
+		final Flight flight = FlightFactory.createFlight(type, airline, origin, destination, passengerCapacity);
+		if (flight == null)
+			return null;
+		flights.add(flight);
+		return flight.getFlightNumber();
 	}
 
 	public Flight getFlightByNumber(String flightNumber) {
