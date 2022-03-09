@@ -1,5 +1,7 @@
-package hw;
+package hw.flight;
 
+import hw.Airline;
+import hw.Airport;
 public class FlightFactory {
 
 	private FlightFactory() { }
@@ -9,7 +11,7 @@ public class FlightFactory {
 		if (type.equals("CommercialFlight"))
 			return new CommercialFlight(airline, origin, destination);
 		else if (type.equals("PassengerFlight"))
-			return new PassengerFlight(passengerCapacity);
+			return new PassengerFlight(airline, origin, destination, passengerCapacity);
 		else
 			return null;
 	}

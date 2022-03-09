@@ -1,21 +1,26 @@
-package hw;
+package hw.flight.manager;
+
+import hw.Airline;
+import hw.Airport;
+import hw.flight.Flight;
+import hw.flight.FlightFactory;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public final class FlightManager {
+public class FlightManagerImpl extends FlightManager {
 
-	private static FlightManager INSTANCE;
+	private static FlightManagerImpl INSTANCE;
 
-	public static FlightManager getInstance() {
+	public static FlightManagerImpl getInstance() {
 		if (INSTANCE == null)
-			INSTANCE = new FlightManager();
+			INSTANCE = new FlightManagerImpl();
 		return INSTANCE;
 	}
 
 	private List<Flight> flights;
 
-	private FlightManager() {
+	private FlightManagerImpl() {
 		flights = new ArrayList<>();
 	}
 
